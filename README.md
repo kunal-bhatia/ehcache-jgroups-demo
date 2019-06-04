@@ -19,3 +19,9 @@ docker push k8s/jgroups/demo/ehcache-demo:1.0.21
 ```
 kubectl apply -f k8s/
 ```
+
+#### Reference to the tcp configuration for jgroups
+https://github.com/kunal-bhatia/ehcache-jgroups-demo/blob/master/src/main/resources/jgroups/tcp.xml
+
+#### Reference to the kubernetes manifests
+https://github.com/kunal-bhatia/ehcache-jgroups-demo/blob/master/k8s/k8s_manifest.yaml

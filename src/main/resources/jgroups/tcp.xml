@@ -2,7 +2,7 @@
         xmlns="urn:org:jgroups"
         xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/jgroups.xsd">
     <TCP
-            bind_addr="match-interface:en0,match-interface:lo0"
+            bind_addr="match-interface:eth0,loopback"
             bind_port="7800"
             recv_buf_size="5M"
             send_buf_size="1M"

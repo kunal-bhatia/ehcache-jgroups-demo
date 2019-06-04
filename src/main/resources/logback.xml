@@ -12,7 +12,7 @@
     <logger name="com.tutorial" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
-    <logger name="io.undertow" level="trace" additivity="false">
+    <logger name="io.undertow" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.jgroups" level="trace" additivity="false">

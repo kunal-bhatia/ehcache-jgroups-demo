@@ -58,8 +58,10 @@ spec:
     spec:
       serviceAccountName: ehcache-demo
       containers:
-      - image: k8s/jgroups/demo/ehcache-demo:1.0.21
+      - image: k8s/jgroups/demo/ehcache-demo:1.0.23
         name: ehcache-demo
+        ports:
+          - containerPort: 8888
         env:
           - name: JAVA_TOOL_OPTIONS
             value: "-Xmx512m -Xms512m -Djava.net.preferIPv4Stack=true"

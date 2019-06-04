@@ -1,5 +1,10 @@
 # ehcache-jgroups-demo
 
+### Build the project
+```
+mvn clean package
+```
+
 ### Build docker image
 ```
 docker build -t k8s/jgroups/demo/ehcache-demo:1.0.21 .

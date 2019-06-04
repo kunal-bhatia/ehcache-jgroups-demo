@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+        updateCheck="false">
+
+    <cacheManagerPeerProviderFactory
+            class="com.tutorial.k8s.ehcache.demo.jgroups.JGroupsCacheManagerPeerProviderFactory"
+            properties="file=jgroups/tcp.xml" />
+
+    <defaultCache maxElementsInMemory="50" eternal="false"
+                  overflowToDisk="false" memoryStoreEvictionPolicy="LFU">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+                properties="replicateAsynchronously=false, replicatePuts=true,
+            replicateUpdates=true, replicateUpdatesViaCopy=false,
+            replicateRemovals=true"/>
+
+        <bootstrapCacheLoaderFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsBootstrapCacheLoaderFactory"
+                properties="bootstrapAsynchronously=false"/>
+    </defaultCache>
+
+    <cache name="countries" eternal="false" maxElementsInMemory="100"
+           overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
+           timeToLiveSeconds="60" memoryStoreEvictionPolicy="LRU">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+                properties="replicateAsynchronously=false, replicatePuts=true,
+            replicateUpdates=true, replicateUpdatesViaCopy=false,
+            replicateRemovals=true"/>
+
+        <bootstrapCacheLoaderFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsBootstrapCacheLoaderFactory"
+                properties="bootstrapAsynchronously=false"/>
+    </cache>
+
+</ehcache>

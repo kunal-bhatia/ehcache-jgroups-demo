@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false" name="ehcache-test">
+
+    <!-- Default Cache -->
+    <defaultCache diskPersistent="false" maxElementsInMemory="10000" eternal="false"
+                  timeToLiveSeconds="10000" overflowToDisk="false" statistics="true" />
+
+    <cache name="countries"
+           diskPersistent="false"
+           eternal="true"
+           maxElementsInMemory="10000"
+           overflowToDisk="false" statistics="true">
+    </cache>
+</ehcache>

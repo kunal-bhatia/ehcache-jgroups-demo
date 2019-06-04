@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ehcache-demo
+spec: {}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ehcache-demo
+  namespace: ehcache-demo
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ehcache-demo
+  namespace: ehcache-demo
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ehcache-demo
+  namespace: ehcache-demo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ehcache-demo
+subjects:
+- kind: ServiceAccount
+  name: ehcache-demo
+  namespace: ehcache-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ehcache-demo
+  name: ehcache-demo
+  namespace: ehcache-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ehcache-demo
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ehcache-demo
+    spec:
+      serviceAccountName: ehcache-demo
+      containers:
+      - image: k8s/jgroups/demo/ehcache-demo:1.0.21
+        name: ehcache-demo
+        env:
+          - name: JAVA_TOOL_OPTIONS
+            value: "-Xmx512m -Xms512m -Djava.net.preferIPv4Stack=true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ehcache-demo
+  name: ehcache-demo
+  namespace: ehcache-demo
+spec:
+  ports:
+  - name: 5678-8080
+    port: 5678
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: ehcache-demo
+  type: NodePort

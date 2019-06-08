@@ -10,7 +10,7 @@ Discovery is therefore done by asking Kubernetes API for a list of IP addresses 
 The protocol spins up a local HTTP Server which is used for sending discovery requests to all instances and wait for the responses.
 
 #### Reference to the tcp configuration for jgroups
-https://bitbucket.kindredgroup.com/bitbucket/projects/TS/repos/ehcache-jgroups-demo/browse/src/main/resources/jgroups/tcp.xml
+https://github.com/kunal-bhatia/ehcache-jgroups-demo/blob/master/src/main/resources/jgroups/tcp.xml
 
 When a discovery is started, KUBE_PING asks Kubernetes for a list of the IP addresses of all pods which are launched, matching the given namespace
 

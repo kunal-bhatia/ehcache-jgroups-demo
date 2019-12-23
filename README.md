@@ -1,4 +1,6 @@
 # ehcache-jgroups-demo
+[![Build Status](https://travis-ci.com/kunal-bhatia/ehcache-jgroups-demo.svg?branch=master)](https://travis-ci.com/kunal-bhatia/ehcache-jgroups-demo)
+
 This is a proof of concept (spring-boot application) for synchronous cache replication in ehcache with jgroups in kubernetes (TCP, UNICAST).
 To achieve the same, we used the jgroups-kubernetes library (https://github.com/jgroups-extras/jgroups-kubernetes/tree/0.9.3)
 which uses the KUBE_PING as the discovery protocol for JGroups cluster nodes managed by kubernetes
